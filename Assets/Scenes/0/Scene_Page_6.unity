@@ -122,39 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &402300825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 402300826}
-  m_Layer: 0
-  m_Name: ///Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &402300826
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402300825}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1502728150}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &615490187
+--- !u!1001 &33327831
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -165,6 +133,14 @@ PrefabInstance:
     - target: {fileID: 4118472400397786385, guid: 137752b765e508e4c9dac6f799ed8a40, type: 3}
       propertyPath: m_Name
       value: "\u8FD4\u56DE\u6309\u94AE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122460779518159140, guid: 137752b765e508e4c9dac6f799ed8a40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetIndexButtonDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122460779518159140, guid: 137752b765e508e4c9dac6f799ed8a40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClickTransBtn, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5373807425878955232, guid: 137752b765e508e4c9dac6f799ed8a40, type: 3}
       propertyPath: m_Pivot.x
@@ -255,11 +231,43 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137752b765e508e4c9dac6f799ed8a40, type: 3}
---- !u!224 &615490188 stripped
+--- !u!224 &33327832 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5373807425878955232, guid: 137752b765e508e4c9dac6f799ed8a40, type: 3}
-  m_PrefabInstance: {fileID: 615490187}
+  m_PrefabInstance: {fileID: 33327831}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &402300825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402300826}
+  m_Layer: 0
+  m_Name: ///Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &402300826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402300825}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1502728150}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &738391522
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +764,7 @@ RectTransform:
   m_Children:
   - {fileID: 942019159}
   - {fileID: 748944578}
-  - {fileID: 615490188}
+  - {fileID: 33327832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

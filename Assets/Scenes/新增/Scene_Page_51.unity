@@ -735,8 +735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.15}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646.7787, y: -247.41861}
-  m_SizeDelta: {x: 682.8348, y: 1024.2521}
+  m_AnchoredPosition: {x: -669, y: -255}
+  m_SizeDelta: {x: 611.6797, y: 917.5197}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831116794
 MonoBehaviour:
@@ -1134,7 +1134,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 664, y: 234}
-  m_SizeDelta: {x: 1549.5635, y: 796.7736}
+  m_SizeDelta: {x: 1321.9895, y: 679.7569}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193471961
 MonoBehaviour:
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a20fc36d183ca3f499c0ac933efb3430, type: 3}
   - {fileID: 21300000, guid: 784307c95656cbd4c8a3cd368d296854, type: 3}
   - {fileID: 21300000, guid: 3651098ccb176534e8b373260cba8389, type: 3}
-  fps: 15
+  fps: 5
 --- !u!114 &1193471962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,7 +1473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6104412341972173847, guid: 5a51edc3e0b70f7488eb6a39dbdd79be, type: 3}
       propertyPath: m_text
-      value: "<incr>\u7B2C\u4E00\u7AE0"
+      value: "<incr>\u7B2C\u4E00\u8FDB"
       objectReference: {fileID: 0}
     - target: {fileID: 6104412341972173847, guid: 5a51edc3e0b70f7488eb6a39dbdd79be, type: 3}
       propertyPath: m_fontColor.b
@@ -2026,8 +2026,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 710, y: 231.00006}
-  m_SizeDelta: {x: 660.1608, y: 880.3517}
+  m_AnchoredPosition: {x: 703.24426, y: 231.44061}
+  m_SizeDelta: {x: 563.2075, y: 751.0604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774550413
 MonoBehaviour:
@@ -2201,6 +2201,7 @@ GameObject:
   - component: {fileID: 2031250240}
   - component: {fileID: 2031250242}
   - component: {fileID: 2031250241}
+  - component: {fileID: 2031250243}
   m_Layer: 5
   m_Name: xianhe2
   m_TagString: Untagged
@@ -2215,17 +2216,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031250239}
-  m_LocalRotation: {x: -0, y: -0, z: -0.24319406, w: 0.9699777}
+  m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1877803948}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.15}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -655, y: -237}
-  m_SizeDelta: {x: 1838.2568, y: 1121.6289}
+  m_AnchoredPosition: {x: -676.3646, y: -245.66705}
+  m_SizeDelta: {x: 1646.7012, y: 1004.7493}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031250241
 MonoBehaviour:
@@ -2265,6 +2266,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031250239}
   m_CullTransparentMesh: 1
+--- !u!114 &2031250243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031250239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9652506d6961be64d9023feb863f60ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 2031250241}
+  frames:
+  - {fileID: 21300000, guid: ae7fa4adda0480442a2b051bd3fb2ae1, type: 3}
+  - {fileID: 21300000, guid: a0e9ea914313a9444a64deff099e55c9, type: 3}
+  - {fileID: 21300000, guid: ef1e50f5ae110c943b061b877744e170, type: 3}
+  - {fileID: 21300000, guid: 65122fed49b01764a81f2b28738ff1d9, type: 3}
+  - {fileID: 21300000, guid: d1729959825aa4047a6bd8e0441d2cf3, type: 3}
+  - {fileID: 21300000, guid: 6042c2a4974fb8d4698bcdca3b658f22, type: 3}
+  - {fileID: 21300000, guid: baf90f0b3e8ab254d92b5aeccbc427dd, type: 3}
+  - {fileID: 21300000, guid: 2f6ed2e54aec79e47b2c6a506153b75b, type: 3}
+  - {fileID: 21300000, guid: 1253984b8371cd34fb86339d8b08832b, type: 3}
+  fps: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

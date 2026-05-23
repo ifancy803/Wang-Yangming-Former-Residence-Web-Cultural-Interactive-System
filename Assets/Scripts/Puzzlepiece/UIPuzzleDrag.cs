@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIPuzzleDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class UIPuzzleDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerEnterHandler
 {
     public PuzzleSlot targetSlot;
     public float snapRange = 50f;
@@ -9,6 +9,7 @@ public class UIPuzzleDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Vector2 originPos;
     private RectTransform rect;
     private PuzzlePiece puzzlePiece;
+    public GameObject text;
 
     void Awake()
     {
@@ -56,5 +57,10 @@ public class UIPuzzleDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             rect.anchoredPosition = originPos;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        text.SetActive(true);
     }
 }
