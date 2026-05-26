@@ -1,4 +1,6 @@
 using UnityEngine;
+// 加这一行，启用新输入系统
+using UnityEngine.InputSystem;
 
 public class CameraDragOrbitSmooth : MonoBehaviour
 {
@@ -31,7 +33,6 @@ public class CameraDragOrbitSmooth : MonoBehaviour
 
         _distance = offset.magnitude;
 
-        // 根据当前相机位置反推角度，保证 Play 后不跳
         _yaw = Mathf.Atan2(offset.x, offset.z) * Mathf.Rad2Deg;
 
         float horizontalDistance = new Vector2(offset.x, offset.z).magnitude;
@@ -47,21 +48,23 @@ public class CameraDragOrbitSmooth : MonoBehaviour
     {
         if (targetPoint == null) return;
 
+        // ========== 这里全部替换成新输入系统 ==========
         bool isDragging =
-            Input.GetMouseButton(0) ||
-            Input.GetMouseButton(1) ||
-            Input.GetMouseButton(2);
+            Mouse.current.leftButton.isPressed ||
+            Mouse.current.rightButton.isPressed ||
+            Mouse.current.middleButton.isPressed;
 
         if (isDragging)
         {
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
+            float mouseX = Mouse.current.delta.x.ReadValue();
+            float mouseY = Mouse.current.delta.y.ReadValue();
 
-            _targetYaw += mouseX * dragSpeed * 100f;
-            _targetPitch -= mouseY * dragSpeed * 100f;
+            _targetYaw += mouseX * dragSpeed;
+            _targetPitch -= mouseY * dragSpeed;
 
             _targetPitch = Mathf.Clamp(_targetPitch, minPitch, maxPitch);
         }
+        // ===========================================
 
         _yaw = Mathf.SmoothDampAngle(_yaw, _targetYaw, ref _yawVelocity, smoothTime);
         _pitch = Mathf.SmoothDampAngle(_pitch, _targetPitch, ref _pitchVelocity, smoothTime);

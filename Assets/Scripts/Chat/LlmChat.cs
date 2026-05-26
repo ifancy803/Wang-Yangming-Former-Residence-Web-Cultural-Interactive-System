@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.InputSystem; // 加这一行
 
 public class LlmChat : MonoBehaviour
 {
@@ -34,7 +35,9 @@ public class LlmChat : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        // 旧代码：Input.GetKeyDown(KeyCode.Return)
+        // 新代码：回车发送
+        if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame)
         {
             sendBtn.onClick.Invoke();
         }
