@@ -10,25 +10,38 @@ using UnityEngine.InputSystem; // 加这一行
 public class LlmChat : MonoBehaviour
 {
     [Header("通义千问通用API")]
-    public string apiKey = "sk-4cca68f7d62642749d3153c3d457da71";
+    [Tooltip("在 Inspector 中填入你自己的 DashScope API Key，不要把真实 Key 提交到公开仓库。")]
+    public string apiKey = "";
     public string apiUrl = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation";
     public string modelName = "qwen-turbo";
+
+    [Header("AI 人设（可选，留空则不发送 system 消息）")]
+    [TextArea(3, 8)]
+    [Tooltip("项目通用化后不再内置任何角色；需要特定人设时在这里填写，或由场景/配置覆盖。")]
+    public string systemPrompt = "你是一个乐于助人的中文智能助手，回答准确、简洁、友好。";
 
     [Header("UI绑定")]
     public TMP_InputField inputField;
     public TextMeshProUGUI replyText;
     public Button sendBtn;
 
+    [Header("对话显示")]
+    [Tooltip("AI 回复在对话区使用的显示名称，可按项目需要修改。")]
+    public string assistantName = "AI 助手";
+
     private List<Message> messages = new List<Message>();
 
     void Start()
     {
-        // 直接在这里把你的王阳明人设+知识库写进去
-        messages.Add(new Message
+        // 通用化：不再硬编码任何特定人物/故居人设，system 消息由 systemPrompt 决定
+        if (!string.IsNullOrEmpty(systemPrompt) && systemPrompt.Trim().Length > 0)
         {
-            role = "system",
-            content = @"你现在扮演心学大师王阳明，从一个古代人的角度，结合中国建筑史与中华传统文化相联系的知识，回答用户关于余姚王阳明故居的建筑介绍（包含官式民居的布局形式）等问题。说话简短、符合古人语气。"
-        });
+            messages.Add(new Message
+            {
+                role = "system",
+                content = systemPrompt
+            });
+        }
         sendBtn.onClick.AddListener(SendChat);
         replyText.text = "";
     }
@@ -48,11 +61,28 @@ public class LlmChat : MonoBehaviour
         string userMsg = inputField.text.Trim();
         if (string.IsNullOrEmpty(userMsg)) return;
 
+        if (string.IsNullOrEmpty(apiKey))
+        {
+            replyText.text += "提示：请先在 Inspector 的 LlmChat 组件中填写 API Key\n";
+            return;
+        }
+
         messages.Add(new Message { role = "user", content = userMsg });
         replyText.text += "你：" + userMsg + "\n";
         inputField.text = "";
 
         StartCoroutine(PostRequest());
+    }
+
+    // 转义 JSON 字符串，避免人设/用户输入中的引号、换行、反斜杠破坏请求体
+    private static string EscapeJson(string value)
+    {
+        if (string.IsNullOrEmpty(value)) return "";
+        return value.Replace("\\", "\\\\")
+                    .Replace("\"", "\\\"")
+                    .Replace("\n", "\\n")
+                    .Replace("\r", "\\r")
+                    .Replace("\t", "\\t");
     }
 
     IEnumerator PostRequest()
@@ -61,7 +91,7 @@ public class LlmChat : MonoBehaviour
         string messagesJson = "";
         foreach (var msg in messages)
         {
-            messagesJson += $"{{\"role\":\"{msg.role}\",\"content\":\"{msg.content.Replace("\"", "\\\"")}\"}},";
+            messagesJson += $"{{\"role\":\"{msg.role}\",\"content\":\"{EscapeJson(msg.content)}\"}},";
         }
         messagesJson = messagesJson.TrimEnd(',');
 
@@ -86,7 +116,7 @@ public class LlmChat : MonoBehaviour
             {
                 QwenResponse res = JsonUtility.FromJson<QwenResponse>(wr.downloadHandler.text);
                 string aiReply = res.output.text.Trim();
-                replyText.text += "王阳明：" + aiReply + "\n\n";
+                replyText.text += assistantName + "：" + aiReply + "\n\n";
                 messages.Add(new Message { role = "assistant", content = aiReply });
             }
             else

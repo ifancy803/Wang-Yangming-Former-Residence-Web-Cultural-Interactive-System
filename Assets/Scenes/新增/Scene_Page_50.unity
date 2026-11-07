@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e7ed0573c2bb54f9fd05455dd7edda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiKey: sk-4cca68f7d62642749d3153c3d457da71
+  apiKey: 
   apiUrl: https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation
   modelName: qwen-turbo
   inputField: {fileID: 35836876}
